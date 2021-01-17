@@ -63,18 +63,18 @@ class DatasetMapperWithBasis(DatasetMapper):
         )
         self.augmentation = build_augmentation(cfg, is_train)
 
-        if cfg.INPUT.CROP.ENABLED and is_train:
-            self.augmentation.insert(
-                0,
-                RandomCropWithInstance(
-                    cfg.INPUT.CROP.TYPE,
-                    cfg.INPUT.CROP.SIZE,
-                    cfg.INPUT.CROP.CROP_INSTANCE,
-                ),
-            )
-            logging.getLogger(__name__).info(
-                "Cropping used in training: " + str(self.augmentation[0])
-            )
+        #        if cfg.INPUT.CROP.ENABLED and is_train:
+        #            self.augmentation.insert(
+        #                0,
+        #                RandomCropWithInstance(
+        #                    cfg.INPUT.CROP.TYPE,
+        #                    cfg.INPUT.CROP.SIZE,
+        #                    cfg.INPUT.CROP.CROP_INSTANCE,
+        #                ),
+        #            )
+        #            logging.getLogger(__name__).info(
+        #                "Cropping used in training: " + str(self.augmentation[0])
+        #            )
 
         # fmt: off
         self.basis_loss_on       = cfg.MODEL.BASIS_MODULE.LOSS_ON
